@@ -1,1 +1,0 @@
-by default, files in here will be copied into the generated folder, useful for adding non-code files like images and large files like csv's.
