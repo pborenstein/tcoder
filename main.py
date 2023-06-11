@@ -22,8 +22,6 @@ openai_image = modal.Image.debian_slim().pip_install("openai")
     concurrency_limit=5,
     timeout=120,
 )
-
-
 def generate_response(model, system_prompt, user_prompt, *args):
     import openai
 
@@ -45,7 +43,7 @@ def generate_response(model, system_prompt, user_prompt, *args):
         "temperature": 0,
     }
 
-    trace(f"""{prettyMessages(messages)}""")
+    trace(prettyMessages(messages))
     response = openai.ChatCompletion.create(**params)
     trace(f"""RESPONSE:\n{response.choices[0]["message"]["content"]}\n{SEPARATOR}\n""")
 
@@ -53,30 +51,10 @@ def generate_response(model, system_prompt, user_prompt, *args):
     return reply
 
 @stub.function()
-def generate_file(filename, model=DEFAULT_MODEL, filepaths_string=None, shared_dependencies=None, prompt=None):
-
-    filecode = generate_response.call(model,
-                                      SYSTEM_PROMPT_TO_GENERATE_FILE.format(prompt=prompt,
-                                                                                filepaths_string=filepaths_string,
-                                                                                shared_dependencies=shared_dependencies),
-                                      USER_PROMPT_TO_GENERATE_FILE.format(filename=filename, prompt=prompt))  
-
-
-    return filename, filecode
-
 def write_file(filename: str, filecode: str, directory: str) -> None:
-    """
-    Write content to a file with the given filename, filecode, and directory.
-
-    Args:
-        filename (str): The name of the file to create.
-        filecode (str): The content to write to the file.
-        directory (str): The directory to create the file in.
-    """
-
     # Create the full file path
     file_path = os.path.join(directory, filename)
-
+    trace(f"Writing file to {file_path}")
     # Create the directory if it doesn't exist
     dir = os.path.dirname(file_path)
     os.makedirs(dir, exist_ok=True)
@@ -91,6 +69,10 @@ def write_file(filename: str, filecode: str, directory: str) -> None:
         file.write(filecode)
 
 def get_list_of_files_needed(model, prompt):
+    """
+    The first prompt (PROMPT_TO_GET_LIST_FILES) gets
+    a list of files needed to generate the code
+    """
     file_list = []
     file_string = generate_response.call(model, PROMPT_TO_GET_LIST_FILES, prompt)
 
@@ -101,17 +83,35 @@ def get_list_of_files_needed(model, prompt):
 
     return file_string, file_list
 
+@stub.function()
 def get_shared_dependencies(model, prompt, filepaths_string, directory=DEFAULT_DIR):
+    """
+    The second prompt (PROMPT_TO_GET_SHARED_DEPENDENCIES) gets a list
+    of shared dependncies, meaning things that are needed by multiple files
+    """
     if os.path.exists("shared_dependencies.md"):
         with open("shared_dependencies.md", "r") as shared_dependencies_file:
             shared_dependencies = shared_dependencies_file.read()
-    else: 
+    else:
         shared_dependencies = generate_response.call(model, PROMPT_TO_GET_SHARED_DEPENDENCIES.format(prompt=prompt, filepaths_string=filepaths_string), prompt)
-        write_file("shared_dependencies.md", shared_dependencies, directory)
+        write_file.call("shared_dependencies.md", shared_dependencies, directory)
 
     return shared_dependencies
 
+@stub.function()
+def generate_file(filename, model=DEFAULT_MODEL, filepaths_string=None, shared_dependencies=None, prompt=None):
+    """
+    The third prompt (SYSTEM_PROMPT_TO_GENERATE_FILE) generates the code.
+    For each of the files we got from the first prompt, we generate the code
+    """
 
+    filecode = generate_response.call(model,
+        SYSTEM_PROMPT_TO_GENERATE_FILE.format(prompt=prompt,
+                                              filepaths_string=filepaths_string,
+                                              shared_dependencies=shared_dependencies),
+        USER_PROMPT_TO_GENERATE_FILE.format(filename=filename, prompt=prompt))  
+
+    return filename, filecode
 
 @stub.local_entrypoint()
 def main(prompt, directory=DEFAULT_DIR, model=DEFAULT_MODEL, file=None):
@@ -120,11 +120,13 @@ def main(prompt, directory=DEFAULT_DIR, model=DEFAULT_MODEL, file=None):
         with open(prompt, "r") as promptfile:
             prompt = promptfile.read()
 
-    filepaths_string, list_actual = get_list_of_files_needed(model, prompt)
-    shared_dependencies = get_shared_dependencies(model, prompt, filepaths_string)
-
     clean_dir(directory)
-    
+
+    #    Prompt 1: Get list of files needed
+    filepaths_string,list_actual = get_list_of_files_needed(model, prompt)
+    #   Prompt 2: Get shared dependencies
+    shared_dependencies = get_shared_dependencies(model, prompt, filepaths_string)
+    #   Prompt 3: Generate code for each file
     for filename, filecode in generate_file.map(list_actual, order_outputs=False,
                                                 kwargs=dict(model=model, 
                                                             filepaths_string=filepaths_string, 

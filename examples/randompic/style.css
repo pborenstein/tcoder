@@ -1,0 +1,24 @@
+/* style.css */
+
+body {
+  background-color: tomato;
+}
+
+#refresh {
+  background-color: white;
+  color: tomato;
+  border: 2px solid tomato;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#refresh:hover {
+  background-color: tomato;
+  color: white;
+}
+
+#refresh:active {
+  background-color: darkred;
+  color: white;
+}

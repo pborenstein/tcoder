@@ -55,9 +55,13 @@ is at the branch named `smol-ai/developer`.
 
 The original used [Modal](https://modal.com),
 and I had just started playing with it.
-Something about using large language models requiring
-a lot of ... everything. It seemed to take a little of
+It seemed to take a little of
 the pain of learning the Python ecosystem.
+Using it feels like when I started using Git.
+I'd just use the commands as incantations, without
+really understanding what was going on.
+That's where I am with Modal now. All that `stub.function()`
+stuff is just magic to me. I hope I'm using right. but :shrug:.
 
 For what it's worth, in working
 on this project I've used about $0.01 of the free tier.
