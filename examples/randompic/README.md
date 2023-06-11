@@ -5,8 +5,15 @@ This is the log of running the [`randompic.md`](../../randompic.md) prompt.
 $ modal run --quiet main  --prompt randompic.md
 ```
 
-```text
-----------------------------------------
+alpha beta
+
+<style>
+.user_prompt {
+  color: tomato;
+}
+</style>
+
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
 system=>: You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
@@ -16,7 +23,7 @@ that the user would write to make the program.
 only list the filepaths you would write, and return them as a python list of strings.
 do not add any other explanation, only return a python list of strings.
 It is IMPORTANT that you return ONLY a python list of strings, not a string.
-user=>: A web page that displays a random picture in a pleasing layout.
+user=>:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -25,7 +32,7 @@ user=>: A web page that displays a random picture in a pleasing layout.
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 ----------------------------------------
 
 RESPONSE:
@@ -40,7 +47,7 @@ that will generate code for the user based on their intent.
 In response to the user's prompt:
 
     ---
-    the app is: A web page that displays a random picture in a pleasing layout.
+    the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -49,7 +56,7 @@ In response to the user's prompt:
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 
     ---
 
@@ -63,7 +70,7 @@ In response to the user's prompt:
     will use, message names, and function names. Exclusively
     focus on the names of the shared dependencies, and do
     not add any other explanation.
-user=>: A web page that displays a random picture in a pleasing layout.
+user=>:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -72,13 +79,13 @@ user=>: A web page that displays a random picture in a pleasing layout.
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 ----------------------------------------
 
 RESPONSE:
 Shared dependencies between the files we are generating:
 
-- index.html: 
+- index.html:
     - img element with id 'img'
     - button element with id 'refresh'
     - script.js file
@@ -100,7 +107,7 @@ Writing file to generated/shared_dependencies.md
 system=>: You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
-the app is: A web page that displays a random picture in a pleasing layout.
+the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -109,14 +116,14 @@ the app is: A web page that displays a random picture in a pleasing layout.
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 
 the files we have decided to generate are: ['index.html', 'style.css', 'script.js']
 the shared dependencies (like filenames and variable names)
 we have decided on are:
 Shared dependencies between the files we are generating:
 
-- index.html: 
+- index.html:
     - img element with id 'img'
     - button element with id 'refresh'
     - script.js file
@@ -144,7 +151,7 @@ Remember that you must obey these things:
 - you are generating code for the file index.html
 - do not stray from the names of the files
   and the shared dependencies we have decided on
-- MOST IMPORTANT OF ALL - the purpose of our app is A web page that displays a random picture in a pleasing layout.
+- MOST IMPORTANT OF ALL - the purpose of our app is<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -153,10 +160,10 @@ Remember that you must obey these things:
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 
   every line of code you generate must be valid code.
-- DO NOT use code fences 
+- DO NOT use code fences
 - DO NOT use markdown syntax.
 - Do not explain the code
 - return valid code for that file type.
@@ -168,7 +175,7 @@ Begin generating the code now.
 system=>: You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
-the app is: A web page that displays a random picture in a pleasing layout.
+the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -177,14 +184,14 @@ the app is: A web page that displays a random picture in a pleasing layout.
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 
 the files we have decided to generate are: ['index.html', 'style.css', 'script.js']
 the shared dependencies (like filenames and variable names)
 we have decided on are:
 Shared dependencies between the files we are generating:
 
-- index.html: 
+- index.html:
     - img element with id 'img'
     - button element with id 'refresh'
     - script.js file
@@ -212,7 +219,7 @@ Remember that you must obey these things:
 - you are generating code for the file style.css
 - do not stray from the names of the files
   and the shared dependencies we have decided on
-- MOST IMPORTANT OF ALL - the purpose of our app is A web page that displays a random picture in a pleasing layout.
+- MOST IMPORTANT OF ALL - the purpose of our app is<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -221,10 +228,10 @@ Remember that you must obey these things:
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 
   every line of code you generate must be valid code.
-- DO NOT use code fences 
+- DO NOT use code fences
 - DO NOT use markdown syntax.
 - Do not explain the code
 - return valid code for that file type.
@@ -233,6 +240,10 @@ Begin generating the code now.
 ----------------------------------------
 
 RESPONSE:
+</code>
+</pre>
+
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -247,14 +258,16 @@ RESPONSE:
     <script src="script.js"></script>
   </body>
 </html>
-----------------------------------------
+```
+
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
 
 
 ----------------------------------------
 system=>: You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
-the app is: A web page that displays a random picture in a pleasing layout.
+the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -263,14 +276,14 @@ the app is: A web page that displays a random picture in a pleasing layout.
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 
 the files we have decided to generate are: ['index.html', 'style.css', 'script.js']
 the shared dependencies (like filenames and variable names)
 we have decided on are:
 Shared dependencies between the files we are generating:
 
-- index.html: 
+- index.html:
     - img element with id 'img'
     - button element with id 'refresh'
     - script.js file
@@ -298,7 +311,7 @@ Remember that you must obey these things:
 - you are generating code for the file script.js
 - do not stray from the names of the files
   and the shared dependencies we have decided on
-- MOST IMPORTANT OF ALL - the purpose of our app is A web page that displays a random picture in a pleasing layout.
+- MOST IMPORTANT OF ALL - the purpose of our app is<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -307,10 +320,10 @@ Remember that you must obey these things:
 - make the background tomato
 - set all listeners in script.js
 - set all colors in style.css
-- make sure the button shows hover and clicked states
+- make sure the button shows hover and clicked states</span>
 
   every line of code you generate must be valid code.
-- DO NOT use code fences 
+- DO NOT use code fences
 - DO NOT use markdown syntax.
 - Do not explain the code
 - return valid code for that file type.
@@ -319,6 +332,10 @@ Begin generating the code now.
 ----------------------------------------
 
 RESPONSE:
+</code></pre>
+
+
+```js
 // script.js
 
 const img = document.getElementById('img');
@@ -330,11 +347,20 @@ function getRandomImage() {
 }
 
 refreshBtn.addEventListener('click', getRandomImage);
-----------------------------------------
+```
+
+</code>
+</pre>
+
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
 
 
 Writing file to generated/index.html
 RESPONSE:
+</code>
+</pre>
+
+```css
 /* style.css */
 
 body {
@@ -360,8 +386,16 @@ body {
   color: white;
 }
 ----------------------------------------
+```
+
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
+
+sssss
+
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
 
 
 Writing file to generated/script.js
 Writing file to generated/style.css
-```
+</code>
+</pre>
