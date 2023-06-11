@@ -11,11 +11,11 @@ completion to set up the next.
 
 - [What I did](#what-i-did)
 - [Using Modal](#using-modal)
-- [What I learned](#what-i-learned)
 - [What it does](#what-it-does)
   - [First prompt: generate a list of files](#first-prompt-generate-a-list-of-files)
   - [Second prompt: find shared dependencies](#second-prompt-find-shared-dependencies)
   - [Third prompt: generate code](#third-prompt-generate-code)
+- [What I learned](#what-i-learned)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -63,33 +63,6 @@ For what it's worth, in working
 on this project I've used about $0.01 of the free tier.
 
 
-## What I learned
-
-I'm learning about LLMs and using ChatGPT seems to be a convenient
-place to start. I've played with the OpenAI API in JavaScript, but
-it seems like all the cool kids are using Python.
-
-The interesting thing about this project, of course, is how
-it uses the output of one completion to set up the next.
-That was the main thing I wanted to learn.
-
-Prompts are weird. A prompt that
-works one day, doesn't quite work the next. 
-My inclination when something doesn't work is to
-make the prompt more specific, but somehow I end up
-making it louder.
-
-The [original project](https://github.com/smol-ai/developer) was
-designed for GPT-4, which apparently generate the code for a Chrome
-plugin. I'm using GPT-3.5 and my aims are much more modest.
-
-
-I still don't like Python. Probably because I don't use it much,
-I find it difficult to read. My eye keeps scanning for curly braces.
-It's not clear to me when newlines are OK
-and when they're not.
-It's a new ecosystem where they do things differently than
-in the JavaScript and Bash worlds. It is a strange and colorful place.
 
 ## What it does
 
@@ -260,3 +233,31 @@ done
 
 The generated code ends up in the `generated` directory.
 
+
+## What I learned
+
+I'm learning about LLMs and using ChatGPT seems to be a convenient
+place to start. I've played with the OpenAI API in JavaScript, but
+it seems like all the cool kids are using Python.
+
+The interesting thing about this project, of course, is how
+it uses the output of one completion to set up the next.
+That was the main thing I wanted to learn.
+
+Prompts are weird. A prompt that
+works one day, doesn't quite work the next. 
+My inclination when something doesn't work is to
+make the prompt more specific, but somehow I end up
+making it louder.
+
+The [original project](https://github.com/smol-ai/developer) was
+designed for GPT-4, which apparently generate the code for a Chrome
+plugin. I'm using GPT-3.5 and my aims are much more modest.
+
+
+I still don't like Python. Probably because I don't use it much,
+I find it difficult to read. My eye keeps scanning for curly braces.
+It's not clear to me when newlines are OK
+and when they're not.
+It's a new ecosystem where they do things differently than
+in the JavaScript and Bash worlds. It is a strange and colorful place.
