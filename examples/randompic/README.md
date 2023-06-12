@@ -17,6 +17,8 @@
 This is the log of running the [`randompic.md`](../../randompic.md) prompt.
 
 
+<strong>whoo</strong>
+
 <style>
 .user_prompt { color: blue; background-color: yellow; }
 .system_prompt { color: green; }
