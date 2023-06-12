@@ -9,9 +9,9 @@ completion to set up the next.
 >[Generate a full web app with ChatGPT](https://pborenstein.dev/posts/tepitoncoder/)
 
 
-**On this page**
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**On this page**
 
 - [Using tepiton coder](#using-tepiton-coder)
 - [What I did](#what-i-did)
