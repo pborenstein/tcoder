@@ -2,13 +2,13 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [The first prompt: get a list of files](#the-first-prompt-get-a-list-of-files)
+- [Prompt 1: get a list of files](#prompt-1-get-a-list-of-files)
   - [prompt 1](#prompt-1)
   - [response 1:](#response-1)
-- [The second prompt: get a list of shared dependencies](#the-second-prompt-get-a-list-of-shared-dependencies)
+- [Prompt 2: get a list of shared dependencies](#prompt-2-get-a-list-of-shared-dependencies)
   - [prompt 2](#prompt-2)
   - [response 2](#response-2)
-- [Third prompt: file generation](#third-prompt-file-generation)
+- [Prompt 3: file generation](#prompt-3-file-generation)
   - [prompt 3a index.html](#prompt-3a-indexhtml)
   - [reponse 3a index.html](#reponse-3a-indexhtml)
   - [prompt 3b style.css](#prompt-3b-stylecss)
@@ -45,7 +45,7 @@ A web page that displays a random picture in a pleasing layout.
 This text is in [`randompic.md`](../../randompic.md).
 
 
-## The first prompt: get a list of files
+## Prompt 1: get a list of files
 
 
 The first prompt gets a list of files needed for the program.
@@ -53,7 +53,7 @@ The system prompt is a description of what we want. We have to
 be very insistent that the response is a python list of strings.
 
 
- ### prompt 1
+### prompt 1
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>system=>:</strong><span class="system_prompt"> You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
@@ -86,7 +86,7 @@ It is IMPORTANT that you return ONLY a python list of strings, not a string.</sp
 
 
 
-## The second prompt: get a list of shared dependencies
+## Prompt 2: get a list of shared dependencies
 
 ### prompt 2
 
@@ -154,7 +154,7 @@ In response to the user's prompt:
     - event listeners for button with id 'refresh'</span>
 </code></pre>
 
-## Third prompt: file generation
+## Prompt 3: file generation
 
 
 ### prompt 3a index.html
