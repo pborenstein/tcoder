@@ -7,14 +7,18 @@
   - [user prompt 1](#user-prompt-1)
   - [response 1:](#response-1)
 - [Prompt 2: get a list of shared dependencies](#prompt-2-get-a-list-of-shared-dependencies)
-  - [prompt 2](#prompt-2)
+  - [system prompt 2](#system-prompt-2)
+  - [user prompt 2](#user-prompt-2)
   - [response 2](#response-2)
 - [Prompt 3: file generation](#prompt-3-file-generation)
   - [prompt 3a index.html](#prompt-3a-indexhtml)
+  - [user](#user)
   - [reponse 3a index.html](#reponse-3a-indexhtml)
-  - [prompt 3b style.css](#prompt-3b-stylecss)
+  - [system prompt 3b style.css](#system-prompt-3b-stylecss)
+  - [user](#user-1)
   - [response 3b style.css](#response-3b-stylecss)
   - [prompt 3c script.js](#prompt-3c-scriptjs)
+  - [user](#user-2)
   - [response 3c script.js](#response-3c-scriptjs)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -93,7 +97,7 @@ It is IMPORTANT that you return ONLY a python list of strings, not a string.</sp
 
 ## Prompt 2: get a list of shared dependencies
 
-### prompt 2
+### system prompt 2
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>system=>:</strong><span class="system_prompt"> You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
@@ -126,7 +130,8 @@ In response to the user's prompt:
     not add any other explanation.</span>
 
 </code></pre>
-&nbsp;
+
+### user prompt 2
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
@@ -207,8 +212,8 @@ and return only the code. do not add any other explanation,
 only return valid code for that file type.</span>
 
 </code></pre>
-&nbsp;
 
+### user
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
@@ -260,7 +265,7 @@ Begin generating the code now.</span>
 ```
 
 
-### prompt 3b style.css
+### system prompt 3b style.css
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>system=>:</strong> <span class="system_prompt">You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
@@ -299,6 +304,12 @@ we have decided on are:
 only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
 only return valid code for that file type.</span>
+
+</code></pre>
+
+### user
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
+
 
 <strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
@@ -404,6 +415,10 @@ only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
 only return valid code for that file type.</span>
 
+</code></pre>
+
+### user
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 script.js. Make sure to have consistent filenames if
