@@ -3,7 +3,8 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Prompt 1: get a list of files](#prompt-1-get-a-list-of-files)
-  - [prompt 1](#prompt-1)
+  - [system prompt 1](#system-prompt-1)
+  - [user prompt 1](#user-prompt-1)
   - [response 1:](#response-1)
 - [Prompt 2: get a list of shared dependencies](#prompt-2-get-a-list-of-shared-dependencies)
   - [prompt 2](#prompt-2)
@@ -26,7 +27,7 @@ This is the log of running the [`randompic.md`](../../randompic.md) prompt.
 $ modal run --quiet main  --prompt randompic.md
 ```
 
-The user prompt, the description of what we want, is
+The main prompt, the description of what we want, is
 pretty specific, giving Tepiton Coder a lot of hints.
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><span class="user_prompt">
@@ -53,7 +54,7 @@ The system prompt is a description of what we want. We have to
 be very insistent that the response is a python list of strings.
 
 
-### prompt 1
+### system prompt 1
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>system=>:</strong><span class="system_prompt"> You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
@@ -64,7 +65,11 @@ that the user would write to make the program.
 only list the filepaths you would write, and return them as a python list of strings.
 do not add any other explanation, only return a python list of strings.
 It is IMPORTANT that you return ONLY a python list of strings, not a string.</span>
+</code></pre>
 
+
+### user prompt 1
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
@@ -120,6 +125,9 @@ In response to the user's prompt:
     focus on the names of the shared dependencies, and do
     not add any other explanation.</span>
 
+</code></pre>
+&nbsp;
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
@@ -198,6 +206,10 @@ only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
 only return valid code for that file type.</span>
 
+</code></pre>
+&nbsp;
+
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 index.html. Make sure to have consistent filenames if
