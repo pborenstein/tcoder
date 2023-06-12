@@ -1,20 +1,54 @@
 This is the log of running the [`randompic.md`](../../randompic.md) prompt.
+<style>
+.user_prompt { color: tomato; }
+.system_prompt { color: green; }
+.file_list { color: blue; }
+.shared_dependencies {color: purple; }
+.filegen_prompt {color:orange}
+</style>
 
 
 ```bash
 $ modal run --quiet main  --prompt randompic.md
 ```
 
-alpha beta
+The user prompt, the description of what we want, is
+pretty specific, giving Tepiton Coder a lot of hints.
 
-<style>
-.user_prompt {
-  color: tomato;
-}
-</style>
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><span class="user_prompt">
+A web page that displays a random picture in a pleasing layout.
+
+- The URL to get a new random picture everytime: https://picsum.photos/400/
+- You do not need to provide any query parameters
+- the id of the img element is 'img'
+- the id of the button is 'refresh'
+- make the background tomato
+- set all listeners in script.js
+- set all colors in style.css
+- make sure the button shows hover and clicked states
+</span></code></pre>
+
+This text is in [`randompic.md`](../../randompic.md).
+
+
+## The first prompt: get a list of files
+
+
+The first prompt gets a list of files needed for the program.
+The system prompt is a description of what we want. We have to
+be very insistent that the response is a python list of strings.
+
+Code:
+
+>   ```python
+>   #    Prompt 1: Get list of files needed
+>   filepaths_string,list_actual = get_list_of_files_needed(model, prompt)
+>   ```
+
+Prompt:
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
-system=>: You are an AI developer who is trying to write a program
+system=>:<span class="system_prompt"> You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 When given their intent, create a complete, exhaustive list of files
@@ -22,7 +56,7 @@ that the user would write to make the program.
 
 only list the filepaths you would write, and return them as a python list of strings.
 do not add any other explanation, only return a python list of strings.
-It is IMPORTANT that you return ONLY a python list of strings, not a string.
+It is IMPORTANT that you return ONLY a python list of strings, not a string.</span>
 user=>:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
@@ -34,14 +68,19 @@ user=>:<span class="user_prompt"> A web page that displays a random picture in a
 - set all colors in style.css
 - make sure the button shows hover and clicked states</span>
 ----------------------------------------
+</code></pre>
+
 
 RESPONSE:
-['index.html', 'style.css', 'script.js']
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
+<span class="file_list">['index.html', 'style.css', 'script.js']</span>
 ----------------------------------------
+</code></pre>
 
+## The second prompt: get a list of shared dependencies
 
-----------------------------------------
-system=>: You are an AI developer who is trying to write a program
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
+system=>:<span class="system_prompt"> You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 In response to the user's prompt:
@@ -60,7 +99,7 @@ In response to the user's prompt:
 
     ---
 
-    the files we have decided to generate are: ['index.html', 'style.css', 'script.js']
+    the files we have decided to generate are: <span class="file_list">['index.html', 'style.css', 'script.js']</span>
 
     Now that we have a list of files, we need to understand
     what dependencies they share. Please name and briefly
@@ -69,7 +108,7 @@ In response to the user's prompt:
     id names of every DOM elements that javascript functions
     will use, message names, and function names. Exclusively
     focus on the names of the shared dependencies, and do
-    not add any other explanation.
+    not add any other explanation.</span>
 user=>:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
@@ -83,7 +122,7 @@ user=>:<span class="user_prompt"> A web page that displays a random picture in a
 ----------------------------------------
 
 RESPONSE:
-Shared dependencies between the files we are generating:
+<span class="shared_dependencies"> <span class="shared_dependencies">Shared dependencies between the files we are generating:
 
 - index.html:
     - img element with id 'img'
@@ -98,16 +137,18 @@ Shared dependencies between the files we are generating:
 - script.js:
     - img element with id 'img'
     - button element with id 'refresh'
-    - event listeners for button with id 'refresh'
-----------------------------------------
+    - event listeners for button with id 'refresh'</span>
+</span>----------------------------------------
+</code></pre>
 
+## Third prompt: file generation
 
-Writing file to generated/shared_dependencies.md
-----------------------------------------
-system=>: You are an AI developer who is trying to write a program
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
+
+system=>: <span class="system_prompt">You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
-the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
+the app is: <span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -118,10 +159,10 @@ the app is:<span class="user_prompt"> A web page that displays a random picture 
 - set all colors in style.css
 - make sure the button shows hover and clicked states</span>
 
-the files we have decided to generate are: ['index.html', 'style.css', 'script.js']
+the files we have decided to generate are: <span class="file_list">['index.html', 'style.css', 'script.js']</span>
 the shared dependencies (like filenames and variable names)
 we have decided on are:
-Shared dependencies between the files we are generating:
+<span class="shared_dependencies">Shared dependencies between the files we are generating:
 
 - index.html:
     - img element with id 'img'
@@ -136,12 +177,12 @@ Shared dependencies between the files we are generating:
 - script.js:
     - img element with id 'img'
     - button element with id 'refresh'
-    - event listeners for button with id 'refresh'
+    - event listeners for button with id 'refresh'</span>
 
 only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
-only return valid code for that file type.
-user=>: We have broken up the program into per-file generation.
+only return valid code for that file type.</span>
+user=>: <span style="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 index.html. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -168,11 +209,15 @@ Remember that you must obey these things:
 - Do not explain the code
 - return valid code for that file type.
 
-Begin generating the code now.
+Begin generating the code now.</span>
 ----------------------------------------
+</code></pre>
 
-----------------------------------------
-system=>: You are an AI developer who is trying to write a program
+
+
+## Third
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
+system=>: <span class="system_prompt">You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
@@ -186,10 +231,10 @@ the app is:<span class="user_prompt"> A web page that displays a random picture 
 - set all colors in style.css
 - make sure the button shows hover and clicked states</span>
 
-the files we have decided to generate are: ['index.html', 'style.css', 'script.js']
+the files we have decided to generate are: <span class="file_list">['index.html', 'style.css', 'script.js']</span>
 the shared dependencies (like filenames and variable names)
 we have decided on are:
-Shared dependencies between the files we are generating:
+<span class="shared_dependencies">Shared dependencies between the files we are generating:
 
 - index.html:
     - img element with id 'img'
@@ -204,12 +249,12 @@ Shared dependencies between the files we are generating:
 - script.js:
     - img element with id 'img'
     - button element with id 'refresh'
-    - event listeners for button with id 'refresh'
+    - event listeners for button with id 'refresh'</span>
 
 only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
-only return valid code for that file type.
-user=>: We have broken up the program into per-file generation.
+only return valid code for that file type.</span>
+user=>: <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 style.css. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -236,12 +281,12 @@ Remember that you must obey these things:
 - Do not explain the code
 - return valid code for that file type.
 
-Begin generating the code now.
+Begin generating the code now.</span>
 ----------------------------------------
-
-RESPONSE:
 </code>
 </pre>
+
+### Generated index.html
 
 ```html
 <!DOCTYPE html>
@@ -264,7 +309,7 @@ RESPONSE:
 
 
 ----------------------------------------
-system=>: You are an AI developer who is trying to write a program
+system=>: <span class="system_prompt">You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
@@ -278,10 +323,10 @@ the app is:<span class="user_prompt"> A web page that displays a random picture 
 - set all colors in style.css
 - make sure the button shows hover and clicked states</span>
 
-the files we have decided to generate are: ['index.html', 'style.css', 'script.js']
+the files we have decided to generate are: <span class="file_list">['index.html', 'style.css', 'script.js']</span>
 the shared dependencies (like filenames and variable names)
 we have decided on are:
-Shared dependencies between the files we are generating:
+<span class="shared_dependencies">Shared dependencies between the files we are generating:
 
 - index.html:
     - img element with id 'img'
@@ -296,12 +341,12 @@ Shared dependencies between the files we are generating:
 - script.js:
     - img element with id 'img'
     - button element with id 'refresh'
-    - event listeners for button with id 'refresh'
+    - event listeners for button with id 'refresh'</span>
 
 only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
-only return valid code for that file type.
-user=>: We have broken up the program into per-file generation.
+only return valid code for that file type.</span>
+user=>: <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 script.js. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -328,12 +373,14 @@ Remember that you must obey these things:
 - Do not explain the code
 - return valid code for that file type.
 
-Begin generating the code now.
+Begin generating the code now.</span>
 ----------------------------------------
 
-RESPONSE:
 </code></pre>
 
+RESPONSE:
+
+### Generated script.js
 
 ```js
 // script.js
@@ -356,9 +403,12 @@ refreshBtn.addEventListener('click', getRandomImage);
 
 
 Writing file to generated/index.html
-RESPONSE:
 </code>
 </pre>
+
+RESPONSE:
+
+### Generated style.css
 
 ```css
 /* style.css */
@@ -385,17 +435,5 @@ body {
   background-color: darkred;
   color: white;
 }
-----------------------------------------
 ```
 
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
-
-sssss
-
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">----------------------------------------
-
-
-Writing file to generated/script.js
-Writing file to generated/style.css
-</code>
-</pre>
