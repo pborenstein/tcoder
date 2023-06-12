@@ -8,8 +8,8 @@ completion to set up the next.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [Using tepiton coder](#using-tepiton-coder)
 - [What I did](#what-i-did)
-- [Using Modal](#using-modal)
 - [What it does](#what-it-does)
   - [First prompt: generate a list of files](#first-prompt-generate-a-list-of-files)
   - [Second prompt: find shared dependencies](#second-prompt-find-shared-dependencies)
@@ -38,19 +38,20 @@ The point at which I diverged from
 [smol-ai/developer](https://github.com/smol-ai/developer)
 is at the branch named `smol-ai/developer`.
 
-## What I did
 
-- Got rid of all the code except for [`main.py`](./main.py)
-  to concentrate on learning Python
-- Got rid of the devcontainer stuff. I do want to learn
-  about devcontainers, but not right now.
-- Moved the prompts to [`prompts.py`](./prompts.py) so I could
-  see what was going on. I gave the goofy names that made sense to me.
-- Added [pretty printing(./utils.py)] code to see what was going on
-- Not interested in tokens at the moment
-- Refactored a bit
+## Using tepiton coder
 
-## Using Modal
+You need
+- To clone this repo
+- An [OpenAI API Key](https://platform.openai.com/account/api-keys)
+  stored in `.env` (See `.example.env`)
+- A [Modal](https://modal.com) account
+
+Run tepiton coder like this:
+
+```bash
+$ modal run main  --prompt "write a 'hello world' in Python"
+```
 
 The original used [Modal](https://modal.com),
 and I had just started playing with it.
@@ -67,8 +68,25 @@ on this project I've used about $0.01 of the free tier.
 
 
 
+## What I did
+
+- Got rid of all the code except for [`main.py`](./main.py)
+  to concentrate on learning Python
+- Got rid of the devcontainer stuff. I do want to learn
+  about devcontainers, but not right now.
+- Moved the prompts to [`prompts.py`](./prompts.py) so I could
+  see what was going on. I gave the goofy names that made sense to me.
+- Added [pretty printing(./utils.py)] code to see what was going on
+- Not interested in tokens at the moment
+- Refactored a bit
+
+
+
+
 ## What it does
 
+You can see a more detailed walkthrough
+at [How tepiton coder works](https://pborenstein.dev/posts/tepitoncoder/).
 
 ### First prompt: generate a list of files
 
