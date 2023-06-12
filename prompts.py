@@ -1,4 +1,4 @@
-PROMPT_TO_GET_LIST_FILES = """
+SYSTEM_PROMPT_TO_GET_LIST_FILES = """
 You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
@@ -10,7 +10,7 @@ do not add any other explanation, only return a python list of strings.
 It is IMPORTANT that you return ONLY a python list of strings, not a string.
 """
 
-PROMPT_TO_GET_SHARED_DEPENDENCIES = """
+SYSTEM_PROMPT_TO_GET_SHARED_DEPENDENCIES = """
 You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
@@ -60,7 +60,7 @@ Remember that you must obey these things:
   and the shared dependencies we have decided on
 - MOST IMPORTANT OF ALL - the purpose of our app is {prompt}
   every line of code you generate must be valid code.
-- DO NOT use code fences 
+- DO NOT use code fences
 - DO NOT use markdown syntax.
 - Do not explain the code
 - return valid code for that file type.

@@ -3,12 +3,12 @@ import modal
 import ast
 from utils import clean_dir, trace, prettyMessages
 from constants import DEFAULT_DIR, DEFAULT_MODEL, DEFAULT_MAX_TOKENS, SEPARATOR
-from prompts import PROMPT_TO_GET_LIST_FILES, \
-                    PROMPT_TO_GET_SHARED_DEPENDENCIES, \
+from prompts import SYSTEM_PROMPT_TO_GET_LIST_FILES, \
+                    SYSTEM_PROMPT_TO_GET_SHARED_DEPENDENCIES, \
                     SYSTEM_PROMPT_TO_GENERATE_FILE, \
                     USER_PROMPT_TO_GENERATE_FILE
 
-stub = modal.Stub("tepiton-coder-v1") 
+stub = modal.Stub("tepiton-coder-v1")
 openai_image = modal.Image.debian_slim().pip_install("openai")
 
 @stub.function(
@@ -70,11 +70,11 @@ def write_file(filename: str, filecode: str, directory: str) -> None:
 
 def get_list_of_files_needed(model, prompt):
     """
-    The first prompt (PROMPT_TO_GET_LIST_FILES) gets
+    The first prompt (SYSTEM_PROMPT_TO_GET_LIST_FILES) gets
     a list of files needed to generate the code
     """
     file_list = []
-    file_string = generate_response.call(model, PROMPT_TO_GET_LIST_FILES, prompt)
+    file_string = generate_response.call(model, SYSTEM_PROMPT_TO_GET_LIST_FILES, prompt)
 
     try:
         file_list = ast.literal_eval(file_string)
@@ -86,14 +86,14 @@ def get_list_of_files_needed(model, prompt):
 @stub.function()
 def get_shared_dependencies(model, prompt, filepaths_string, directory=DEFAULT_DIR):
     """
-    The second prompt (PROMPT_TO_GET_SHARED_DEPENDENCIES) gets a list
+    The second prompt (SYSTEM_PROMPT_TO_GET_SHARED_DEPENDENCIES) gets a list
     of shared dependncies, meaning things that are needed by multiple files
     """
     if os.path.exists("shared_dependencies.md"):
         with open("shared_dependencies.md", "r") as shared_dependencies_file:
             shared_dependencies = shared_dependencies_file.read()
     else:
-        shared_dependencies = generate_response.call(model, PROMPT_TO_GET_SHARED_DEPENDENCIES.format(prompt=prompt, filepaths_string=filepaths_string), prompt)
+        shared_dependencies = generate_response.call(model, SYSTEM_PROMPT_TO_GET_SHARED_DEPENDENCIES.format(prompt=prompt, filepaths_string=filepaths_string), prompt)
         write_file.call("shared_dependencies.md", shared_dependencies, directory)
 
     return shared_dependencies
@@ -109,7 +109,7 @@ def generate_file(filename, model=DEFAULT_MODEL, filepaths_string=None, shared_d
         SYSTEM_PROMPT_TO_GENERATE_FILE.format(prompt=prompt,
                                               filepaths_string=filepaths_string,
                                               shared_dependencies=shared_dependencies),
-        USER_PROMPT_TO_GENERATE_FILE.format(filename=filename, prompt=prompt))  
+        USER_PROMPT_TO_GENERATE_FILE.format(filename=filename, prompt=prompt))
 
     return filename, filecode
 
@@ -128,8 +128,8 @@ def main(prompt, directory=DEFAULT_DIR, model=DEFAULT_MODEL, file=None):
     shared_dependencies = get_shared_dependencies(model, prompt, filepaths_string)
     #   Prompt 3: Generate code for each file
     for filename, filecode in generate_file.map(list_actual, order_outputs=False,
-                                                kwargs=dict(model=model, 
-                                                            filepaths_string=filepaths_string, 
+                                                kwargs=dict(model=model,
+                                                            filepaths_string=filepaths_string,
                                                             shared_dependencies=shared_dependencies,
                                                             prompt=prompt)):
         write_file(filename, filecode, directory)

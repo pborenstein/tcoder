@@ -1,4 +1,3 @@
-
 # tepiton coder
 
 A program that uses the ChatGPT API to generate code.
@@ -27,7 +26,7 @@ the ChatGPT API and was wrtten in Python. I found
 which is described as _the thing that builds the thing_.
 
 > Given a prompt that describes a program in detail,
-> it creates the code and writes out the files. 
+> it creates the code and writes out the files.
 
 I was having trouble understanding the prompts, so
 I pulled them out into a separate file and reorganized
@@ -36,12 +35,12 @@ in the mechanics of writing in Python than in generating
 code, I removed the files that weren't germane to my goal.
 
 The point at which I diverged from
-[smol-ai/developer](https://github.com/smol-ai/developer) 
+[smol-ai/developer](https://github.com/smol-ai/developer)
 is at the branch named `smol-ai/developer`.
 
 ## What I did
 
-- Got rid of all the code except for [`main.py`](./main.py) 
+- Got rid of all the code except for [`main.py`](./main.py)
   to concentrate on learning Python
 - Got rid of the devcontainer stuff. I do want to learn
   about devcontainers, but not right now.
@@ -107,7 +106,7 @@ it uses the output of one completion to set up the next.
 That was the main thing I wanted to learn.
 
 Prompts are weird. A prompt that
-works one day, doesn't quite work the next. 
+works one day, doesn't quite work the next.
 My inclination when something doesn't work is to
 make the prompt more specific, but somehow I end up
 making it louder.

@@ -1,7 +1,13 @@
+This is the log of running the [`randompic.md`](../../randompic.md) prompt.
+
+
+
+```bash
+$ modal run --quiet main  --prompt randompic.md
+```
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
 - [Prompt 1: get a list of files](#prompt-1-get-a-list-of-files)
   - [system prompt 1](#system-prompt-1)
   - [user prompt 1](#user-prompt-1)
@@ -23,16 +29,40 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-This is the log of running the [`randompic.md`](../../randompic.md) prompt.
 
 
 
-```bash
-$ modal run --quiet main  --prompt randompic.md
+## How the prompts work
+
+Every ChatGPT prompt is a
+[set of messages](https://platform.openai.com/docs/guides/gpt/chat-completions-api)
+made up of a role and some content.
+The roles are:
+
++ system: instructions for the model
++ user: user instructions
++ assistant: what the model generates
+
+```json
+import openai
+
+openai.ChatCompletion.create(
+  model="gpt-3.5-turbo",
+  messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who won the world series in 2020?"},
+        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+        {"role": "user", "content": "Where was it played?"}
+    ]
+)
 ```
 
-The main prompt, the description of what we want, is
-pretty specific, giving Tepiton Coder a lot of hints.
+### The wish prompt
+
+The wish prompt, the description of what we want
+tepiton coder tp make for us, is
+pretty specific, giving it a lot of hints.
+(I call it the _wish prompt_ because I am no good at naming things.)
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><span class="user_prompt">
 A web page that displays a random picture in a pleasing layout.
@@ -47,7 +77,34 @@ A web page that displays a random picture in a pleasing layout.
 - make sure the button shows hover and clicked states
 </span></code></pre>
 
-This text is in [`randompic.md`](../../randompic.md).
+You'll see that this prompt is repeated in every request.
+
+### The built in prompts
+
+- `SYSTEM_PROMPT_TO_GET_LIST_FILES`
+  This prompt just asks Tepiton Coder to figure out what
+  files we'll need. Its corresponding user prompt is the wish prompt.
+
++ `SYSTEM_PROMPT_TO_GET_SHARED_DEPENDENCIES`
+  This prompt incorporates the wish prompt and the list of
+  files generated to figure out dependencies.
+  Its corresponding user prompt is the wish prompt.
+
++ `SYSTEM_PROMPT_TO_GENERATE_FILE`
+  This system prompt incorporates the wish prompt,
+  the list of files needed,
+  and the shared dependencies to help it make sense
+  of how the pieces go together.
+
++ `USER_PROMPT_TO_GENERATE_FILE`
+  A companion user prompt, this one tells Tepiton Coder
+  which file to generate, and gives lots of advice.
+
+
+
+
+
+
 
 
 ## Prompt 1: get a list of files
