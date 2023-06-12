@@ -35,7 +35,7 @@ $ modal run --quiet main  --prompt randompic.md
 The user prompt, the description of what we want, is
 pretty specific, giving Tepiton Coder a lot of hints.
 
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><span color="yellow">
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><span style="border: 1px solid black>
 A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
