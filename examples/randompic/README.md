@@ -18,9 +18,10 @@ This is the log of running the [`randompic.md`](../../randompic.md) prompt.
 
 
 <style>
-.user_prompt { color: blue; background-color: yellow; display: block; }
+.user_prompt { color: blue; background-color: orange display:block; }
 .system_prompt { color: green; }
-.file_list { color: blue; background-color: orange; line-height: 12px}
+.file_list { color: blue; background-color: yellow;
+height: 100% }
 .shared_dependencies {color: purple; }
 .filegen_prompt {color:orange}
 </style>
