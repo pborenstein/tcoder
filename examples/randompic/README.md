@@ -15,10 +15,12 @@
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 This is the log of running the [`randompic.md`](../../randompic.md) prompt.
+
+
 <style>
-.user_prompt { color: blue; }
+.user_prompt { color: blue; background-color: yellow; display: block; }
 .system_prompt { color: green; }
-.file_list { color: blue; }
+.file_list { color: blue; background-color: orange; line-height: 12px}
 .shared_dependencies {color: purple; }
 .filegen_prompt {color:orange}
 </style>
