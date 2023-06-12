@@ -6,8 +6,14 @@ This is the log of running the [`randompic.md`](../../randompic.md) prompt.
 $ modal run --quiet main  --prompt randompic.md
 ```
 
+
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [How the prompts work](#how-the-prompts-work)
+  - [The wish prompt](#the-wish-prompt)
+  - [The built in prompts](#the-built-in-prompts)
 - [Prompt 1: get a list of files](#prompt-1-get-a-list-of-files)
   - [system prompt 1](#system-prompt-1)
   - [user prompt 1](#user-prompt-1)
@@ -62,7 +68,7 @@ openai.ChatCompletion.create(
 The wish prompt, the description of what we want
 tepiton coder tp make for us, is
 pretty specific, giving it a lot of hints.
-(I call it the _wish prompt_ because I am no good at naming things.)
+(I call it the _wish prompt_ because reasons.)
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><span class="user_prompt">
 A web page that displays a random picture in a pleasing layout.
