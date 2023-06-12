@@ -3,29 +3,23 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [The first prompt: get a list of files](#the-first-prompt-get-a-list-of-files)
+  - [prompt 1](#prompt-1)
+  - [response 1:](#response-1)
 - [The second prompt: get a list of shared dependencies](#the-second-prompt-get-a-list-of-shared-dependencies)
+  - [prompt 2](#prompt-2)
+  - [response 2](#response-2)
 - [Third prompt: file generation](#third-prompt-file-generation)
-  - [Generating index.html](#generating-indexhtml)
-    - [index.html](#indexhtml)
-  - [Generating style.css](#generating-stylecss)
-    - [style.css](#stylecss)
-  - [Generating script.js](#generating-scriptjs)
-    - [script.js](#scriptjs)
+  - [prompt 3a index.html](#prompt-3a-indexhtml)
+  - [reponse 3a index.html](#reponse-3a-indexhtml)
+  - [prompt 3b style.css](#prompt-3b-stylecss)
+  - [response 3b style.css](#response-3b-stylecss)
+  - [prompt 3c script.js](#prompt-3c-scriptjs)
+  - [response 3c script.js](#response-3c-scriptjs)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 This is the log of running the [`randompic.md`](../../randompic.md) prompt.
 
-
-<strong>whoo</strong>
-
-<style>
-  .user_prompt { color: blue; }
-  .system_prompt { color: green; }
-  .file_list { color: blue; background-color: yellow;}
-  .shared_dependencies {color: purple; }
-  .filegen_prompt {color:orange}
-</style>
 
 
 ```bash
@@ -58,10 +52,10 @@ The first prompt gets a list of files needed for the program.
 The system prompt is a description of what we want. We have to
 be very insistent that the response is a python list of strings.
 
-PROMPT:
 
+ ### prompt 1
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
-system=>:<span class="system_prompt"> You are an AI developer who is trying to write a program
+<strong>system=>:</strong><span class="system_prompt"> You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 When given their intent, create a complete, exhaustive list of files
@@ -70,7 +64,8 @@ that the user would write to make the program.
 only list the filepaths you would write, and return them as a python list of strings.
 do not add any other explanation, only return a python list of strings.
 It is IMPORTANT that you return ONLY a python list of strings, not a string.</span>
-user=>:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
+
+<strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -83,7 +78,7 @@ user=>:<span class="user_prompt"> A web page that displays a random picture in a
 </code></pre>
 
 
-RESPONSE:
+### response 1:
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <span class="file_list">['index.html', 'style.css', 'script.js']</span>
 </code></pre>
@@ -93,9 +88,9 @@ RESPONSE:
 
 ## The second prompt: get a list of shared dependencies
 
-PROMPT:
+### prompt 2
 
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">system=>:<span class="system_prompt"> You are an AI developer who is trying to write a program
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>system=>:</strong><span class="system_prompt"> You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 In response to the user's prompt:
@@ -124,7 +119,8 @@ In response to the user's prompt:
     will use, message names, and function names. Exclusively
     focus on the names of the shared dependencies, and do
     not add any other explanation.</span>
-user=>:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
+
+<strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -137,7 +133,7 @@ user=>:<span class="user_prompt"> A web page that displays a random picture in a
 </code></pre>
 
 
-RESPONSE:
+### response 2
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <span class="shared_dependencies">Shared dependencies between the files we are generating:
@@ -161,10 +157,10 @@ RESPONSE:
 ## Third prompt: file generation
 
 
-### Generating index.html
+### prompt 3a index.html
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
-system=>: <span class="system_prompt">You are an AI developer who is trying to write a program
+<strong>system=>:</strong> <span class="system_prompt">You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 the app is: <span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
@@ -201,7 +197,8 @@ we have decided on are:
 only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
 only return valid code for that file type.</span>
-user=>: <span class="filegen_prompt">We have broken up the program into per-file generation.
+
+<strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 index.html. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -231,7 +228,7 @@ Remember that you must obey these things:
 Begin generating the code now.</span>
 </code></pre>
 
-#### index.html
+### reponse 3a index.html
 
 ```html
 <!DOCTYPE html>
@@ -251,9 +248,9 @@ Begin generating the code now.</span>
 ```
 
 
-### Generating style.css
+### prompt 3b style.css
 
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">system=>: <span class="system_prompt">You are an AI developer who is trying to write a program
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>system=>:</strong> <span class="system_prompt">You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
@@ -290,7 +287,8 @@ we have decided on are:
 only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
 only return valid code for that file type.</span>
-user=>: <span class="filegen_prompt">We have broken up the program into per-file generation.
+
+<strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 style.css. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -321,10 +319,7 @@ Begin generating the code now.</span>
 </code>
 </pre>
 
-####  style.css
-
-RESPONSE:
-
+### response 3b style.css
 
 ```css
 /* style.css */
@@ -353,13 +348,13 @@ body {
 }
 ```
 
-### Generating script.js
+### prompt 3c script.js
 
 
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 
-system=>: <span class="system_prompt">You are an AI developer who is trying to write a program
+<strong>system=>:</strong> <span class="system_prompt">You are an AI developer who is trying to write a program
 that will generate code for the user based on their intent.
 
 the app is:<span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
@@ -396,7 +391,8 @@ we have decided on are:
 only write valid code for the given filepath and file type,
 and return only the code. do not add any other explanation,
 only return valid code for that file type.</span>
-user=>: <span class="filegen_prompt">We have broken up the program into per-file generation.
+
+<strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 script.js. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -427,9 +423,8 @@ Begin generating the code now.</span>
 
 </code></pre>
 
-RESPONSE:
 
-#### script.js
+### response 3c script.js
 
 ```js
 // script.js
@@ -448,9 +443,11 @@ refreshBtn.addEventListener('click', getRandomImage);
 </code>
 </pre>
 
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
-
-Writing file to generated/index.html
-</code>
-</pre>
+<style>
+  .user_prompt { color: blue; }
+  .system_prompt { color: green; }
+  .file_list { color: blue; background-color: yellow;}
+  .shared_dependencies {color: purple; }
+  .filegen_prompt {color:orange}
+</style>
 
