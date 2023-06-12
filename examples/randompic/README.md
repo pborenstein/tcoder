@@ -73,8 +73,7 @@ It is IMPORTANT that you return ONLY a python list of strings, not a string.</sp
 
 
 ### user prompt 1
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
-<strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -132,8 +131,7 @@ In response to the user's prompt:
 </code></pre>
 
 ### user prompt 2
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
-<strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>user=>:</strong><span class="user_prompt"> A web page that displays a random picture in a pleasing layout.
 
 - The URL to get a new random picture everytime: https://picsum.photos/400/
 - You do not need to provide any query parameters
@@ -214,8 +212,7 @@ only return valid code for that file type.</span>
 </code></pre>
 
 ### user prompt 3a
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
-<strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 index.html. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -308,10 +305,7 @@ only return valid code for that file type.</span>
 </code></pre>
 
 ### user prompt 3b
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
-
-
-<strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 style.css. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -418,8 +412,7 @@ only return valid code for that file type.</span>
 </code></pre>
 
 ### user prompt 3c
-<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
-<strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
+<pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text"><strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
 script.js. Make sure to have consistent filenames if
 you reference other files we are also generating.
@@ -475,6 +468,6 @@ refreshBtn.addEventListener('click', getRandomImage);
   .system_prompt { color: green; }
   .file_list { color: blue; background-color: yellow;}
   .shared_dependencies {color: purple; }
-  .filegen_prompt {color:orange}
+  .filegen_prompt {color: #D95E00; }
 </style>
 
