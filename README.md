@@ -5,6 +5,10 @@ A little bigger than Hello World, but not too much bigger.
 The interesting thing is that the program uses the output of one
 completion to set up the next.
 
+**Corresponding blog post**
+
+[Generate a full web app with ChatGPT](https://pborenstein.dev/posts/tepitoncoder/)
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
