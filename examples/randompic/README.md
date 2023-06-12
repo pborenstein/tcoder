@@ -11,14 +11,14 @@
   - [user prompt 2](#user-prompt-2)
   - [response 2](#response-2)
 - [Prompt 3: file generation](#prompt-3-file-generation)
-  - [prompt 3a index.html](#prompt-3a-indexhtml)
-  - [user](#user)
+  - [system prompt 3a index.html](#system-prompt-3a-indexhtml)
+  - [user prompt 3a](#user-prompt-3a)
   - [reponse 3a index.html](#reponse-3a-indexhtml)
   - [system prompt 3b style.css](#system-prompt-3b-stylecss)
-  - [user](#user-1)
+  - [user prompt 3b](#user-prompt-3b)
   - [response 3b style.css](#response-3b-stylecss)
-  - [prompt 3c script.js](#prompt-3c-scriptjs)
-  - [user](#user-2)
+  - [system prompt 3c script.js](#system-prompt-3c-scriptjs)
+  - [user prompt 3c](#user-prompt-3c)
   - [response 3c script.js](#response-3c-scriptjs)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -170,7 +170,7 @@ In response to the user's prompt:
 ## Prompt 3: file generation
 
 
-### prompt 3a index.html
+### system prompt 3a index.html
 
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>system=>:</strong> <span class="system_prompt">You are an AI developer who is trying to write a program
@@ -213,7 +213,7 @@ only return valid code for that file type.</span>
 
 </code></pre>
 
-### user
+### user prompt 3a
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
@@ -307,7 +307,7 @@ only return valid code for that file type.</span>
 
 </code></pre>
 
-### user
+### user prompt 3b
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 
 
@@ -371,7 +371,7 @@ body {
 }
 ```
 
-### prompt 3c script.js
+### system prompt 3c script.js
 
 
 
@@ -417,7 +417,7 @@ only return valid code for that file type.</span>
 
 </code></pre>
 
-### user
+### user prompt 3c
 <pre style="background-color: rgb(248, 248, 248); height: 66px;"><code class="text">
 <strong>user=>:</strong> <span class="filegen_prompt">We have broken up the program into per-file generation.
 Now your job is to generate only the code for the file
