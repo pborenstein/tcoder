@@ -49,7 +49,7 @@ The roles are:
 + user: user instructions
 + assistant: what the model generates
 
-```json
+```js
 import openai
 
 openai.ChatCompletion.create(
